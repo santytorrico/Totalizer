@@ -1,4 +1,4 @@
-
+import netprice from "./calculate";
 
 const quant = document.querySelector("#quantity");
 const prices = document.querySelector("#price")
@@ -12,5 +12,5 @@ form.addEventListener("submit", (event) => {
   const quantity = Number.parseInt(quant.value);
 
 
-  div.innerHTML = "<p>" + `Actual quantity ${quantity} ` + `Price ${price}` + "</p>";
+  div.innerHTML = "<p>" + `The net Price is ${netprice(price,quantity)}` + "</p>";
 });
