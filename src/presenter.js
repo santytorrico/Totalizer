@@ -6,6 +6,17 @@ const prices = document.querySelector("#price")
 const form = document.querySelector("#totalizer-form");
 const div = document.querySelector("#resultado-div");
 
+function getTranslationMap(qdiscount){
+  const discounts={
+    1000:3,
+    3000:5,
+    7000:7,
+    10000:10,
+    30000:15,
+  };
+  return discounts[qdiscount]?? 0
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -13,5 +24,5 @@ form.addEventListener("submit", (event) => {
   const quantity = Number.parseInt(quant.value);
   const tax = Number.parseInt(taxes.value);
 
-  div.innerHTML = "<p>" + `The net Price is ${netprice(price,quantity)} `+ `Taxes applied to this product ${tax}%` + "</p>";
+  div.innerHTML = "<p>" + `The net Price is ${netprice(price,quantity)} `+ `Taxes applied to this product ${tax}% ` + `The discount can be of ${getTranslationMap(quantity)} ` + "</p>";
 });
