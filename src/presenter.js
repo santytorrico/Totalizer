@@ -1,4 +1,4 @@
-import netprice from "./calculate";
+import {netprice,taxprice} from "./calculate";
 
 const quant = document.querySelector("#quantity");
 const taxes = document.querySelector("#tax");
@@ -23,6 +23,6 @@ form.addEventListener("submit", (event) => {
   const price = Number.parseInt(prices.value);
   const quantity = Number.parseInt(quant.value);
   const tax = Number.parseInt(taxes.value);
-
-  div.innerHTML = "<p>" + `The net Price is ${netprice(price,quantity)} `+ `Taxes applied to this product ${tax}% ` + `The discount can be of ${getTranslationMap(quantity)} ` + "</p>";
+  const np=netprice(price,quantity)
+  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${taxprice(np,tax)} ` + `The discount can be of ${getTranslationMap(quantity)} ` + "</p>";
 });
