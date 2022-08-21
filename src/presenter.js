@@ -6,7 +6,7 @@ const prices = document.querySelector("#price")
 const form = document.querySelector("#totalizer-form");
 const div = document.querySelector("#resultado-div");
 
-function getTranslationMap(qdiscount){
+function checkDiscount(qdiscount){
   const discounts={
     1000:3,
     3000:5,
@@ -17,14 +17,25 @@ function getTranslationMap(qdiscount){
   return discounts[qdiscount]?? 0
 }
 
+function getTax(stax){
+  const statetax={
+    "UT":6.65,
+    "NV":8.00,
+    "TX":6.25,
+    "AL":4.00,
+    "CA":8.25,
+  };
+  return statetax[stax]?? "State Not Found"
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const price = Number.parseInt(prices.value);
   const quantity = Number.parseInt(quant.value);
-  const tax = Number.parseInt(taxes.value);
+  const tax = getTax(taxes.value);
   const np=netprice(price,quantity)
   const taxap= (np*tax)/100 
   const tp= np + taxap
-  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount ${getTranslationMap(quantity)} ` + "</p>";
+  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount ${checkDiscount(quantity)} ` + "</p>";
 });
