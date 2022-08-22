@@ -33,9 +33,12 @@ form.addEventListener("submit", (event) => {
 
   const price = Number.parseInt(prices.value);
   const quantity = Number.parseInt(quant.value);
+  const discount = checkDiscount(quantity);
   const tax = getTax(taxes.value);
   const np=netprice(price,quantity)
-  const taxap= (np*tax)/100 
-  const tp= np + taxap
-  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount ${checkDiscount(quantity)} `+ `The actual percentage of tax is  ${tax}%` + "</p>";
+  const distoap = (np*discount)/100
+  const taxtoap= (np*tax)/100 
+  const tp= np + taxtoap
+  
+  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount to apply ${discount}` + `The actual percentage of tax is  ${tax}%` + "</p>";
 });
