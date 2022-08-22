@@ -40,5 +40,5 @@ form.addEventListener("submit", (event) => {
   const taxtoap= (np*tax)/100 
   const tp= np + taxtoap
   
-  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount to apply ${discount}` + `The actual percentage of tax is  ${tax}%` + "</p>";
+  div.innerHTML = "<p>" + `Price whith Taxes applied to this product ${tp} ` + `Discount to apply ${distoap}` + `The actual percentage of tax is  ${tax}%` + "</p>";
 });
